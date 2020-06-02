@@ -206,20 +206,6 @@ namespace Drawing3D.Controls
 			for( int i = 0; i < m_Items.Length; i++ ) {
 				m_Items[ i ].Draw( e.Graphics, m_Projector, m_CartToGdiTransform );
 			}
-
-			List<PointF> ptOnScreen = new List<PointF>();
-			for( int i = 0; i < m_Items.Length; i++ ) {
-				PointF cartStart2d = m_Projector.Project( ( (LineItem)m_Items[ i ] ).Start );
-				//PointF startgraphics = m_CartToGdiTransform.ToGdi( cart2d );
-				ptOnScreen.Add( cartStart2d );
-
-				PointF cartEnd2d = m_Projector.Project( ( (LineItem)m_Items[ i ] ).End );
-				//PointF startgraphics = m_CartToGdiTransform.ToGdi( cart2d );
-				ptOnScreen.Add( cartEnd2d );
-			}
-
-			float oldRatio = m_Projector.Scale;
-			BoundF bound2d = new BoundF( ptOnScreen );
 		}
 
 		void fitCamera()
